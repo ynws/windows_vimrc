@@ -1,0 +1,77 @@
+" コマンドラインの高さ(GUI使用時)
+set cmdheight=1
+
+" save window size & pos
+let g:save_window_file = expand('~/.vimwinpos')
+augroup SaveWindow
+  autocmd!
+  autocmd VimLeavePre * call s:save_window()
+  function! s:save_window()
+    let options = [
+      \ 'set columns=' . &columns,
+      \ 'set lines=' . &lines,
+      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+      \ ]
+    call writefile(options, g:save_window_file)
+  endfunction
+augroup END
+
+" 自動改行しない
+set formatoptions=q
+
+if filereadable(g:save_window_file)
+  execute 'source' g:save_window_file
+endif
+
+" 色設定(rcg_gui.vimを基本に若干改造。Teraterm色に)
+set background=dark
+highlight clear
+if exists("syntax_on")
+  syntax reset
+endif
+
+let colors_name = "rcg_gui"
+
+highlight Normal        guifg=lightgrey         guibg=Black
+highlight Statement     guifg=Yellow
+highlight Operator      guifg=Yellow
+highlight PreProc       guifg=Magenta
+highlight Identifier    guifg=cyan
+highlight Type          guifg=DarkGreen
+highlight Special       guifg=Magenta
+highlight String        guifg=red
+highlight Number        guifg=red
+highlight Constant      guifg=Red
+highlight Comment       guifg=steelblue
+
+" 他で起動中ならタブで開く
+if has('gui_running') && argc()
+    let s:running_vim_list = filter(
+    \   split(serverlist(), '\n'),
+    \   'v:val !=? v:servername')
+    " If one or more Vim instances are running
+    if !empty(s:running_vim_list)
+        " Open given files in running Vim and exit.
+        silent execute '!start gvim'
+        \   '--servername' s:running_vim_list[0]
+        \   '--remote-tab-silent' '"' . join(argv(), ' ') . '"'
+        qa!
+    endif
+    unlet s:running_vim_list
+endif
+
+" clip
+set guioptions+=a
+
+" autoindent
+set shiftwidth=4
+
+if has('multi_byte_ime') || has('xim')
+    " 日本語入力ON時のカーソルの色を設定
+    highlight CursorIM guibg=Purple guifg=NONE
+endif
+
+" ツールバー非表示
+set guioptions-=T
+set guioptions-=m
+
