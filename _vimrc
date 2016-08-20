@@ -110,3 +110,7 @@ let g:markdown_fenced_languages = ['vim', 'ruby', 'cpp', 'c', 'sh']
 " インクリメント10進固定したければ
 " set nf=""
 
+" クリップボード共有
+if has('gui') || has('xterm_clipboard')
+    set clipboard=unnamed
+endif
