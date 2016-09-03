@@ -1,13 +1,22 @@
-" タブの画面上での幅
-set tabstop=4
-" タブをスペースに展開する
-set expandtab
-" 行番号を表示
-set number
-" コマンドラインの高さ
-set cmdheight=1
-" バックアップファイルを作成しない
-set nobackup
+set tabstop=4       " タブの画面上での幅
+set expandtab       " タブをスペースに展開する
+set number          " 行番号を表示
+set cmdheight=1     " コマンドラインの高さ
+set scrolloff=8     " 上下8行の視界を確保
+set helpheight=999  " ヘルプを画面いっぱいに開く
+set history=2000    " コマンドラインの履歴を2000件保存する
+set iminsert=2      " インサートモードから抜けると自動的にIMEをオフにする
+
+set nobackup        " バックアップファイルを作成しない
+set noundofile      " undo file 作成しない
+set noswapfile      " swap file 作成しない
+
+" 検索/置換の設定
+set hlsearch        " 検索文字列をハイライトする
+set incsearch       " インクリメンタルサーチを行う
+set ignorecase      " 大文字と小文字を区別しない
+set smartcase       " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
+set wrapscan        " 最後尾まで検索を終えたら次の検索で先頭に移る
 
 " 全角スペース・行末のスペース・タブの可視化
 if has("syntax")
@@ -31,8 +40,6 @@ if has("syntax")
         autocmd BufNew,BufRead * call ActivateInvisibleIndicator()
     augroup END
 endif
-
-set history=1000
 
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
@@ -99,11 +106,6 @@ if filereadable($VIM . '/vimrc_howm.vim')
   source $VIM/vimrc_howm.vim
 endif
 
-" undo file 作成しない
-set noundofile
-" swap file 作成しない
-set noswapfile
-
 " markdown code ハイライト
 let g:markdown_fenced_languages = ['vim', 'ruby', 'cpp', 'c', 'sh']
 
@@ -112,5 +114,5 @@ let g:markdown_fenced_languages = ['vim', 'ruby', 'cpp', 'c', 'sh']
 
 " クリップボード共有
 if has('gui') || has('xterm_clipboard')
-    set clipboard=unnamed
+    set clipboard=unnamed,unnamedplus
 endif
