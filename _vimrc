@@ -5,7 +5,6 @@ set cmdheight=1     " コマンドラインの高さ
 set scrolloff=8     " 上下8行の視界を確保
 set helpheight=999  " ヘルプを画面いっぱいに開く
 set history=2000    " コマンドラインの履歴を2000件保存する
-set iminsert=2      " インサートモードから抜けると自動的にIMEをオフにする
 
 set nobackup        " バックアップファイルを作成しない
 set noundofile      " undo file 作成しない
