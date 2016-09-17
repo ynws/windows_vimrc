@@ -106,7 +106,7 @@ if filereadable($VIM . '/vimrc_howm.vim')
 endif
 
 " markdown code ハイライト
-let g:markdown_fenced_languages = ['vim', 'ruby', 'cpp', 'c', 'sh']
+let g:markdown_fenced_languages = ['vim', 'ruby', 'cpp', 'c', 'sh', 'js=javascript', 'css', 'html', 'cob=cbl=cobol', 'java', 'asm', 'cs']
 
 " インクリメント10進固定したければ
 " set nf=""
