@@ -2,9 +2,10 @@ set tabstop=4       " タブの画面上での幅
 set expandtab       " タブをスペースに展開する
 set number          " 行番号を表示
 set cmdheight=1     " コマンドラインの高さ
-set scrolloff=8     " 上下8行の視界を確保
+set scrolloff=5     " 上下5行の視界を確保
 set helpheight=999  " ヘルプを画面いっぱいに開く
 set history=2000    " コマンドラインの履歴を2000件保存する
+set display+=lastline " 最後の行をできるだけ表示
 
 set nobackup        " バックアップファイルを作成しない
 set noundofile      " undo file 作成しない
@@ -108,7 +109,7 @@ if filereadable($VIM . '/vimrc_howm.vim')
 endif
 
 " markdown code ハイライト
-let g:markdown_fenced_languages = ['vim', 'ruby', 'cpp', 'c', 'sh', 'js=javascript', 'css', 'html', 'cob=cbl=cobol', 'java', 'asm', 'cs']
+let g:markdown_fenced_languages = ['vim', 'ruby', 'cpp', 'c', 'sh', 'js=javascript', 'css', 'html', 'cob=cbl=cobol', 'java', 'asm', 'cs', 'bat=dosbatch']
 
 " インクリメント10進固定したければ
 " set nf=""
