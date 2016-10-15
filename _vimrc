@@ -118,3 +118,9 @@ let g:markdown_fenced_languages = ['vim', 'ruby', 'cpp', 'c', 'bash=sh', 'js=jav
 if has('gui') || has('xterm_clipboard')
     set clipboard=unnamed,unnamedplus
 endif
+
+" カーソル移動禁止
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
