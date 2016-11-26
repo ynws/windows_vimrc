@@ -6,6 +6,7 @@ set display+=lastline " 最後の行をできるだけ表示
 set backspace=indent,eol,start
 set showmatch
 set nolist
+set synmaxcol=320   " 長い行はハイライト無くす
 
 set autoindent      " 自動インデント有効
 set tabstop=4       " タブの画面上での幅
